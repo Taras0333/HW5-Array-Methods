@@ -1,8 +1,12 @@
-
-//1
+	let numberArray = [];
+	let average = 0;
+	let resultMediana = 0;
+	let filter = [];
+	let positiveNumbers = []; 
+	let divedByFive = [];
+	//1
 
 function getRandomArray(length, min, max){
-	let numberArray = [];
 	for (let i = 0; i <= length -1; i++){
 	let random = 0;
 	random =  Math.floor(Math.random() * ((+max) - (+min) + 1)) + (+min);
@@ -10,13 +14,12 @@ function getRandomArray(length, min, max){
 }
 	return numberArray;
 }
-console.log(getRandomArray(prompt('Write the length'), prompt('Write min integer'), prompt('Write max integer')));
+console.log(getRandomArray(prompt('Write the length of array'), prompt('Write min integer'), prompt('Write max integer')));
 
 //3
 function getAverage(quontity, numbers){
-	let sum = 0;
 	let array = [];
-
+	let sum = 0;
 	for (let i = 0; i <= quontity - 2; i++){
  	if (Number.isInteger(numbers)){
  		sum += numbers;
@@ -35,18 +38,18 @@ function getAverage(quontity, numbers){
  		sum += 0
  		alert('its not an integer');
  	}
- return sum / quontity;
+ average = sum / quontity;
+ return sum / quontity;;
 
 
 }
-console.log(getAverage(+prompt('how long?'), +prompt('Write number')));
+console.log(getAverage(+prompt('How long you want the array to be?'), +prompt('Write number')));
 
 //4
 
 function getMediana (quontity, number){
 let array = [];
 let medianaIndex = 0;
-let result = 0;
 for (let i =0; i <= quontity - 2; i++){
 	if (Number.isInteger(number)){
 	array.push(number);
@@ -66,17 +69,17 @@ for (let i =0; i <= quontity - 2; i++){
 	array.sort((a,b ) => a - b);
 	if(array.length % 2 == 0){
 		medianaIndex = array.length / 2;
-		result = (array[medianaIndex - 1] + array[medianaIndex]) / 2;
+		resultMediana = (array[medianaIndex - 1] + array[medianaIndex]) / 2;
 
 
 		
 	} else{
 		medianaIndex = array.length / 2 + 0.5;
-		result = array[medianaIndex - 1];
+		resultMediana = array[medianaIndex - 1];
 	}
-	return result;
+	return resultMediana;
 }
-console.log(getMediana(+prompt('how long?'), +prompt('Write number')));
+console.log(getMediana(+prompt('How long you want the array to be?'), +prompt('Write number')));
 
 //5
 
@@ -87,13 +90,14 @@ function filterEvenNumbers(quontity ,numbers){
 		numbers = +prompt('Write numbers');
 	}
 	array.push(numbers);
-	const filter = array.filter((el, i, arr) => {
+	filter = array.filter((el, i, arr) => {
 		if (el % 2) return true;
 			else return false;
 	})
 	return filter;
 }
-console.log(filterEvenNumbers(prompt('How much'), +prompt('Write numbers')));
+console.log(filterEvenNumbers(prompt('How long you want the array to be?'), +prompt('Write number')));
+
 //6
 function countPositiveNumbers(quontity ,numbers){
 	let array = [];
@@ -106,11 +110,11 @@ function countPositiveNumbers(quontity ,numbers){
 		if (el > 0) return true;
 			else return false;
 	})
-	const result = numbersBiggerThanNull.length;
-	return result;
+	positiveNumbers = numbersBiggerThanNull.length;
+	return positiveNumbers;
 
 }
-console.log(countPositiveNumbers(+prompt('How much'), +prompt('Enter numbers')));
+console.log(countPositiveNumbers(+prompt('How long you want the array to be?'), +prompt('Enter number')));
 //7
 function getDivededByFive(quontity ,numbers){
 	let array = [];
@@ -119,10 +123,20 @@ function getDivededByFive(quontity ,numbers){
 		numbers = +prompt('Write numbers');
 	}
 	array.push(numbers);
-	const divedByFive = array.filter((el, i, arr) => {
+	divedByFive = array.filter((el, i, arr) => {
 		if (Number.isInteger(el / 5)) return true;
 			else return false;
 	})
 	return divedByFive;
 	}
-	console.log(getDivededByFive(+prompt('How much'), +prompt('Enter numbers')));
+	console.log(getDivededByFive(+prompt('How long you want the array to be?'), +prompt('Enter number')));
+
+const container=document.querySelector("#container");
+container.innerHTML=`
+<p>Random array: ${numberArray};</p>
+<p> Average: ${average};</p>
+<p>Mediana: ${resultMediana};</p>
+<p>Filtered array: ${filter};</p>
+<p>Positive numbers: ${positiveNumbers};</p>
+<p>Array of numbers you can dived by 5: ${divedByFive};</p>
+`;

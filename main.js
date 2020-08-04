@@ -4,6 +4,8 @@
 	let filter = [];
 	let positiveNumbers = []; 
 	let divedByFive = [];
+	let goodWords = [];
+	let resultGoodWord = [];
 	//1
 
 function getRandomArray(length, min, max){
@@ -130,6 +132,38 @@ function getDivededByFive(quontity ,numbers){
 	return divedByFive;
 	}
 	console.log(getDivededByFive(+prompt('How long you want the array to be?'), +prompt('Enter number')));
+//8
+function replaceBadWords(words){
+	const split = words.split('');
+	let firstTransformation = '';
+	let secondTransformation = [];
+	for (let i = 0; i <= split.length - 1; i++){
+		if (split[i] === " "){
+			secondTransformation.push(firstTransformation);
+			firstTransformation = '';
+		}else{
+			firstTransformation += split[i];
+		}
+	}
+	secondTransformation.push(firstTransformation);
+	 secondTransformation.some(i =>{
+		if (i === "fuck" || i === "Fuck"){
+			resultGoodWord.push("****");
+		}else if(i === "fucking" || i === "Fucking"){
+			resultGoodWord.push("****ing");
+		}else if(i === "shit" || i === "Shit"){
+			resultGoodWord.push("****");
+		}
+		else{
+			resultGoodWord.push(i);
+		}
+	})
+	 resultGoodWord = resultGoodWord.join(' ');
+	return resultGoodWord;
+	}
+console.log(replaceBadWords(prompt('Write what you want')));
+
+
 
 const container=document.querySelector("#container");
 container.innerHTML=`
@@ -139,4 +173,5 @@ container.innerHTML=`
 <p>Filtered array: ${filter};</p>
 <p>Positive numbers: ${positiveNumbers};</p>
 <p>Array of numbers you can dived by 5: ${divedByFive};</p>
+<p>Sentence without bad words: ${resultGoodWord};</p>
 `;

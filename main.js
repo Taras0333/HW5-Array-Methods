@@ -19,32 +19,44 @@ function getRandomArray(length, min, max){
 console.log(getRandomArray(prompt('Write the length of array'), prompt('Write min integer'), prompt('Write max integer')));
 
 //3
+
 function getAverage(numbers){
 	const split = numbers.split('');
-	let firstTransformation = '';
+	let firstTransformation = 0;
 	let secondTransformation = [];
-	split.forEach(i => {
-		if(i === ','){
+	let finalArray = [];
+	for(i = 0; i <= split.length - 1; i++){
+		if(split[i] === ','){
 			secondTransformation.push(firstTransformation);
-			firstTransformation = '';
-		}else if(i === ' '){
+			firstTransformation = 0;
+		}else if(split[i] === ' '){
 
 		}
-		else{
-			firstTransformation += i;
+		else if(split[i] === '.'){
+			firstTransformation -= +split[i - 1];
+			firstTransformation -= +split[i + 1];
+		}else{
+			firstTransformation += +split[i];
+		}
+	}
+	secondTransformation.push(firstTransformation);
+	secondTransformation.forEach(i => {
+		if(i === 0){
+			
+			
+		}else {
+			finalArray.push(i);
 		}
 	})
-	secondTransformation.push(firstTransformation);
 	let array = [];
 	let sum = 0;
 
-	for (let i = 0; i <= secondTransformation.length; i++){
- 	if (Number.isInteger(+secondTransformation[i])){
- 		sum += +secondTransformation[i];
- 	} else{
- 		sum += 0 	}
+	for (let i = 0; i <= finalArray.length - 1; i++){
+ 	
+ 		sum += +finalArray[i];
+ 	
  }
- average = sum / secondTransformation.length;
+ average = sum / finalArray.length;
  return average;
 
 
@@ -84,7 +96,6 @@ for (let i =0; i <= secondTransformation.length - 1; i++){
 
 }
 console.log(array);
-debugger
 	array.sort((a, b ) => a - b);
 	if(array.length % 2 == 0){
 		medianaIndex = array.length / 2;
@@ -230,6 +241,7 @@ function replaceBadWords(words){
 	return resultGoodWord;
 	}
 console.log(replaceBadWords(prompt('Write what you want, to cack on bad words')));
+
 
 
 

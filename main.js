@@ -8,15 +8,22 @@
 	let resultGoodWord = [];
 	//1
 
-function getRandomArray(length, min, max){
-	for (let i = 0; i <= length -1; i++){
-	let random = 0;
-	random =  Math.floor(Math.random() * ((+max) - (+min) + 1)) + (+min);
-	numberArray.push(random);
+/*function getRandomArray(length, min, max){
+
+	if (!Number.isInteger(length) || !Number.isInteger(min) || !Number.isInteger(max)){
+		console.log('err');
+		return
+	} else{
+		for (let i = 0; i <= length -1; i++){
+			let random = 0;
+			random =  Math.floor(Math.random() * ((max) - (min) + 1)) + (min);
+			numberArray.push(random);
+		}
+			return numberArray;
+	}
+
 }
-	return numberArray;
-}
-console.log(getRandomArray(prompt('Write the length of array'), prompt('Write min integer'), prompt('Write max integer')));
+console.log(getRandomArray(+prompt('Write the length of array'), +prompt('Write min integer'), +prompt('Write max integer')));
 
 //3
 
@@ -39,6 +46,7 @@ function getAverage(numbers){
 			firstTransformation += +split[i];
 		}
 	}
+	
 	secondTransformation.push(firstTransformation);
 	secondTransformation.forEach(i => {
 		if(i === 0){
@@ -59,14 +67,13 @@ function getAverage(numbers){
  average = sum / finalArray.length;
  return average;
 
-
 }
+
 getAverage(prompt('Write numbers to get average'));
 
 //4
 
 function getMediana (number){
-console.log(number);
 const split = number.split('');
 let firstTransformation = '';
 let secondTransformation = [];
@@ -140,26 +147,26 @@ let secondTransformation = [];
 	return filter;
 }
 filterEvenNumbers(prompt('Write numbers you want to find even numbers'));
-//6
+//6 */
+
 function countPositiveNumbers(numbers){
 	let split = numbers.split('');
-	console.log(split);
 	let firstTransformation = '';
 let secondTransformation = [];
 
-	split.forEach(i => {
-		if(i === ','){
+	for(let i =0; i < split.length; i++){
+		if(split[i] === ','){
 			secondTransformation.push(firstTransformation);
 			firstTransformation = '';
-		}else if(i === ' '){
+		}else if(split[i] === ' '){
 
-		}else if(i === '-'){
-			firstTransformation += i;
+		}else if(split[i] === '-'){
+			firstTransformation += split[i];
 		}
 		else{
-			firstTransformation += i;
+			firstTransformation += split[i];
 		}
-	})
+	}
 	secondTransformation.push(firstTransformation);
 	console.log(secondTransformation);
 	const numbersBiggerThanNull = secondTransformation.filter((el, i, arr) => {
@@ -179,7 +186,7 @@ let secondTransformation = [];
 countPositiveNumbers(prompt('Write numbers you want to find positive'));
 
 //7
-function getDivededByFive(numbers){
+/*function getDivededByFive(numbers){
 	let split = numbers.split('');
 	console.log(split);
 	let firstTransformation = '';
@@ -245,7 +252,7 @@ console.log(replaceBadWords(prompt('Write what you want, to cack on bad words'))
 
 
 
-
+*/
 const container=document.querySelector("#container");
 container.innerHTML=`
 <p>Random array: ${numberArray};</p>
